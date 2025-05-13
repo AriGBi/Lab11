@@ -37,9 +37,10 @@ class Controller:
             return
         grafo=self._model.build_Graph(self._coloreScelto,annoInt)
         self._view.txtOut.controls.append(ft.Text(f"Il grafo ha {grafo.number_of_nodes()} nodi e {grafo.number_of_edges()} archi"))
-        massimi=self._model.archiMax()
+        massimi,nodiRipetuti=self._model.archiMax()
         for arco in massimi:
             self._view.txtOut.controls.append(ft.Text(arco))
+        self._view.txtOut.controls.append(ft.Text(f"Nodi ripetuti: {nodiRipetuti}"))
         self._view.update_page()
         return
 

@@ -49,7 +49,7 @@ from go_products gp
         conn = DBConnect.get_connection()
         result = []
         cursor = conn.cursor(dictionary=True)
-        query = """  select t.Product_number as p1 , v.Product_number as p2, count(*) as peso
+        query = """  select t.Product_number as p1 , v.Product_number as p2, count(distinct t.`Date`) as peso
 from(select gds.Product_number , gds.`Date` , gds.Retailer_code  from go_daily_sales gds , go_products gp  where gds.Product_number =gp.Product_number and gp.Product_color =%s) t, (select gds.Product_number , gds.`Date` , gds.Retailer_code from go_daily_sales gds , go_products gp 
 where gds.Product_number =gp.Product_number and gp.Product_color =%s)v
 where t.`Date` = v.`Date` and year(v.`Date`) = %s
