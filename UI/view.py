@@ -31,6 +31,7 @@ class View(ft.UserControl):
         #ROW with some controls
         # text field for the name
         self._ddyear = ft.Dropdown(label="Anno")
+
         self._ddcolor = ft.Dropdown(label="Colore")
 
         # button for the "creat graph" reply
@@ -40,6 +41,7 @@ class View(ft.UserControl):
         self._page.controls.append(row1)
 
         self._controller.fillDD()
+        self._controller.fillDDColor()
 
         # List View where the reply is printed
         self.txtOut = ft.ListView(expand=1, spacing=10, padding=10, auto_scroll=True)
